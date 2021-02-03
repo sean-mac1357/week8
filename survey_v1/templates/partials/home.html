@@ -1,0 +1,5 @@
+  
+<h1>${title}</h1>
+<ul>
+    ${data.map(topic => `<li>${topic.topic_name} - Ranking of ${topic.ranking_value} (${topic.ranking_title})</li>`).join('')}
+</ul>

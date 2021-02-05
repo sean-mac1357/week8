@@ -12,17 +12,9 @@
     "db:init": "psql -f schema_topics.sql class_survey",
     "db:seed": "psql -f seed_topics.sql class_survey"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/john-manack/class_survey_v1.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/john-manack/class_survey_v1/issues"
-  },
-  "homepage": "https://github.com/john-manack/class_survey_v1#readme",
   "dependencies": {
     "express": "^4.17.1",
     "express-es6-template-engine": "^2.2.3",

@@ -1,0 +1,23 @@
+{
+  "name": "book_review_v1",
+  "version": "1.0.0",
+  "description": "Book Review",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "db:create": "createdb book_review",
+    "db:destroy": "dropdb book_review",
+    "db:init": "psql -f schema_topics.sql book_review",
+    "db:seed": "psql -f seed_topics.sql book_review"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-es6-template-engine": "^2.2.3",
+    "pg-promise": "^10.9.2"
+  }
+}

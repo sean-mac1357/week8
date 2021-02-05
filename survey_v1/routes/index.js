@@ -1,3 +1,4 @@
+
 'use strict';
 
 const express = require('express'),
@@ -5,17 +6,29 @@ const express = require('express'),
     surveyModel = require('../models/surveyModel');
 
 router.get('/', async (req, res) => {
-    const surveyData = await surveyModel.getAll();
-    
+    const surveyData = await surveyModel.getAll(),
+        statusData = await surveyModel.getRankings();
+
+    console.log("survey Data: ", surveyData);
+    console.log("status Data: ", statusData);
     res.render('template', {
         locals: {
-            title: "Sean's Language Rankings",
+            title: "Rankings of Languages",
             data: surveyData,
+            statusData
         },
         partials: {
             body: "partials/home"
         }
     });
+});
+
+router.post('/', async (req, res) => {
+    console.log(req.body);
+    for (let key in req.body) {
+        await surveyModel.updateEntry(key, req.body[key]);
+    }
+    res.redirect('/');
 });
 
 module.exports = router;

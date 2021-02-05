@@ -1,5 +1,15 @@
-  
 <h1>${title}</h1>
-<ul>
-    ${data.map(topic => `<li>${topic.topic_name} - Ranking of ${topic.ranking_value} (${topic.ranking_title})</li>`).join('')}
-</ul>
+<form action="/" method="POST">
+    <ul>
+        ${data.map(topic => { return `
+            <li><span class="language">${topic.topic_name}</span> - <span class="ranking_number">${topic.topic_score}</span> <span class="ranking_description">(${topic.ranking_title})</span>
+                <select name="${topic.topic_name}">
+                    ${statusData.map(status => { return `
+                        <option ${topic.topic_score === status.id ? 'selected' : ''} value=${status.id}>${status.ranking_title}</option>
+                    `}).join('')}
+                </select>
+            </li>
+            `}).join('')}
+        <button type="submit">Update HTML Score</button>
+    </ul>
+</form>

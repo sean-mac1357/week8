@@ -10,7 +10,7 @@ class SurveyModel {
 
     static async getAll() {
         const response = await db.any(`
-            SELECT topic_name, ranking_value, ranking_title
+            SELECT *
             FROM topics
             INNER JOIN ranking_scale
                 ON topics.topic_score = ranking_scale.id
@@ -22,15 +22,17 @@ class SurveyModel {
     static async getRankings() {
         const response = await db.any(`
             SELECT * FROM ranking_scale;
-        `)
-    }
+        `);
+        return response;
+    };
 
-    static async updateEntry(new_score){
-        const response = await db.result(`
+    static async updateEntry(topic, score){
+        const query = `
         UPDATE topics
-        SET topic_score = $1
-        WHERE id = 1;
-        `, [new_score]);
+        SET topic_score = ${score}
+        WHERE topic_name = '${topic}';
+        `;
+        const response = await db.result(query)
         return response;
     }
 }

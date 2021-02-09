@@ -14,7 +14,7 @@ class SurveyModel {
             FROM topics
             INNER JOIN ranking_scale
                 ON topics.topic_score = ranking_scale.id
-            ORDER BY ranking_value DESC;
+            ORDER BY topic_name ASC;
         `);
         return response;
     };
@@ -28,11 +28,11 @@ class SurveyModel {
 
     static async updateEntry(topic, score){
         const query = `
-        UPDATE topics
-        SET topic_score = ${score}
-        WHERE topic_name = '${topic}';
+            UPDATE topics
+            SET topic_score = ${score}
+            WHERE topic_name = '${topic}';
         `;
-        const response = await db.result(query)
+        const response = await db.result(query);
         return response;
     }
 }

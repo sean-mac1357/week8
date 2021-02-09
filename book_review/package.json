@@ -1,23 +1,26 @@
 {
-  "name": "book_review_v1",
+  "name": "cars_review_v1",
   "version": "1.0.0",
-  "description": "Book Review",
+  "description": "Cars Review",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "db:create": "createdb book_review",
-    "db:destroy": "dropdb book_review",
-    "db:init": "psql -f schema_topics.sql book_review",
-    "db:seed": "psql -f seed_topics.sql book_review"
+    "db:create": "createdb cars_review",
+    "db:destroy": "dropdb cars_review",
+    "db:init": "psql -f schema.sql cars_review",
+    "db:seed": "psql -f seed.sql cars_review"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "express-es6-template-engine": "^2.2.3",
-    "pg-promise": "^10.9.2"
+    "express-session": "^1.17.1",
+    "pg-promise": "^10.9.2",
+    "slugify": "^1.4.6"
   }
 }

@@ -1,0 +1,54 @@
+<section class="section">
+    <div class="clearfix">
+        <p>${carsData.title}</p>
+        <figure class="image">
+            <img src="${carsData.emblem}"/>
+        </figure>
+    </div>
+    <div class="clearfix">
+        <ul style="margin-top: 16px;" class="reviews">
+            ${reviewData.map(review => {return `
+                <li>
+                    <span>${review.score} Stars</span>
+                    <p>${review.comment}</p>
+                </li>
+                `}).join('')}
+        </ul>
+        <hr/>
+    <form class="form clearfix" action="/reviews/add" method="POST">
+        <p>Add a new review:</p>
+        <input type="hidden" value="${carsData.id}" name="car_id"/>
+        <input type="hidden" value="${user_id}" name="user_id" />
+        <div class="field">
+            <div class="control">
+                <textarea class="textarea is-primary" placeholder="Leave a review" rows="4" cols="50" name="review_comment" required></textarea>
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <span style="display:inline-block; margin-right: 16px;">Rating:</span>
+                <label>
+                    <input type="radio" value=1 name="score" required/>
+                    1 Star
+                </label>
+                <label>
+                    <input type="radio" value=2 name="score"/>
+                    2 Stars
+                </label>
+                <label>
+                    <input type="radio" value=3 name="score"/>
+                    3 Stars
+                </label>
+                <label>
+                    <input type="radio" value=4 name="score"/>
+                    4 Stars
+                </label>
+                <label>
+                    <input type="radio" value=5 name="score"/>
+                    5 Stars
+                </label>
+            </div>
+        </div>
+        <button class="button is-primary" type="submit">Submit Review</button>
+    </form>
+</section>
